@@ -3,7 +3,10 @@ from unittest import mock
 from unittest.mock import patch
 import io
 import sys
-sys.path.append('../data')
+import os
+current = os.path.dirname(os.path.realpath(__file__))
+parent = os.path.dirname(current)
+sys.path.append(parent)
 from Organizer import printHighest
 
 

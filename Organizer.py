@@ -58,10 +58,11 @@ def printAvg(pre_data, post_data, direction):
 
 def printShortest(pre_data, post_data, direction):
     '''
-    print the shorest performance(direction) among pre, post-operation status
+    print the shortest performance(direction) among pre, post-operation status
     param pre_data, post_data: list of patient data
     param direction: str, { "lateral", "height" }
     '''
+    direction_dic = { "height":"lowest", "lateral":"shortest" }
     idx=4 if direction=="lateral" else 5
     min=9223372036854775807
     minIdx=0
@@ -78,11 +79,11 @@ def printShortest(pre_data, post_data, direction):
             minIdx=postIdx
             preHasMinData=False
     if(preHasMinData==True):
-        print("Patient %s %s threw the shortest with %.1f" 
-            %(pre_data[minIdx][1], pre_data[minIdx][0] , pre_data[minIdx][idx]))
+        print("Patient %s %s threw the %s with %.1f" 
+            %(pre_data[minIdx][1], pre_data[minIdx][0], direction_dic[direction], pre_data[minIdx][idx]))
     else: 
-        print("Patient %s %s threw the shortest with %.1f" 
-            %(post_data[minIdx][1], post_data[minIdx][0] , post_data[minIdx][idx]))
+        print("Patient %s %s threw the %s with %.1f" 
+            %(post_data[minIdx][1], post_data[minIdx][0], direction_dic[direction], post_data[minIdx][idx]))
 
 def printLongest(pre_data, post_data, direction):
     '''
@@ -90,6 +91,7 @@ def printLongest(pre_data, post_data, direction):
     param pre_data, post_data: list of patient data
     param direction: str, { "lateral", "height" }
     '''
+    direction_dic = { "height":"highest", "lateral":"longest" }
     idx=4 if direction=="lateral" else 5
     max=0 
     maxIdx=0
@@ -106,11 +108,11 @@ def printLongest(pre_data, post_data, direction):
             maxIdx=postIdx
             preHasMaxData=False
     if(preHasMaxData==True):
-        print("Patient %s %s threw the longest with %.1f" 
-            %(pre_data[maxIdx][1], pre_data[maxIdx][0] , pre_data[maxIdx][idx]))
+        print("Patient %s %s threw the %s with %.1f" 
+            %(pre_data[maxIdx][1], pre_data[maxIdx][0], direction_dic[direction], pre_data[maxIdx][idx]))
     else: 
-        print("Patient %s %s threw the longest with %.1f" 
-            %(post_data[maxIdx][1], post_data[maxIdx][0] , post_data[maxIdx][idx]))
+        print("Patient %s %s threw the %s with %.1f" 
+            %(post_data[maxIdx][1], post_data[maxIdx][0], direction_dic[direction], post_data[maxIdx][idx]))
 
 
 def printHighest(pre_data, post_data, gender, direction):
